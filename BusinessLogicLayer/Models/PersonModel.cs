@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Models
 {
-    class PersonModel
+    public class PersonModel
     {
         public int Id { get; set; }
         [RegularExpression(@"\A[^\d_]+\z", ErrorMessage = "Invalid Data type")]

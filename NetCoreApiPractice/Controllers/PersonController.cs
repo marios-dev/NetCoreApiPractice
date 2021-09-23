@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLogicLayer.Models;
+using Microsoft.AspNetCore.Mvc;
 using NetCoreApiPractice.Repository;
 using NetCoreApiPractice.Repository.Entities;
 using System;
@@ -18,14 +19,14 @@ namespace NetCoreApiPractice.Controllers
         }
         [HttpGet]
         [Route("getPersons")]
-        public List<Person> GetAllPersons()
+        public List<PersonModel> GetAllPersons()
         {
             return _BLL.GetAllPersons();
         }
 
         [HttpGet]
         [Route("getPerson")]
-        public ActionResult <Person> GetPersonById(int id)
+        public ActionResult <PersonModel> GetPersonById(int id)
         {
             var person= _BLL.GetPersonById(id);
             if (person==null)

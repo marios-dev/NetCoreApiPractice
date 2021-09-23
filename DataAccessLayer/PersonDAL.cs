@@ -19,5 +19,11 @@ namespace DataAccessLayer
             p = db.People.FirstOrDefault(p => p.Id == id);
             return p;
         }
+        public void postPerson(Person person)
+        {
+            var db = new PersonDbContext();
+            db.Add(person);
+            db.SaveChanges();
+        }
     }
 }
