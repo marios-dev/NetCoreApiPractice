@@ -15,7 +15,16 @@ namespace BusinessLogicLayer
         }
         public List<Person> GetAllPersons()
         {
-             var data= _DAL.GetAllPersons();
+            var data = _DAL.GetAllPersons();
+            return data;
+        }
+        public Person GetPersonById(int id)
+        {
+            var data = _DAL.GetPersonById(id);
+            if (data == null)
+            {
+                throw new Exception("Invalid ID");
+            }
             return data;
         }
     }

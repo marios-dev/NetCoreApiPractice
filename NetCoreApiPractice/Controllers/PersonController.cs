@@ -25,24 +25,16 @@ namespace NetCoreApiPractice.Controllers
 
         [HttpGet]
         [Route("getPerson")]
-        public Person GetPerson(int id)
+        public ActionResult <Person> GetPersonById(int id)
         {
-            var db = new PersonDbContext();
-            Person p = new Person();
-            p = db.People.FirstOrDefault(p => p.Id == id);
-            if (p==null)
+            var person= _BLL.GetPersonById(id);
+            if (person==null)
             {
-                throw new Exception("Not found");
+                return NotFound("Invalid ID");
             }
-            return p;
+            return Ok(person);
         }
 
-        [Route("getage")]
-        [HttpGet]
-        public int GetAge()
-        {
-            return 10;
-        }
         [Route("postPerson")]
         [HttpDelete]
         public void postPerson([FromBody] Person p)

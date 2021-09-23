@@ -12,5 +12,12 @@ namespace DataAccessLayer
             var db = new PersonDbContext();
             return db.People.ToList();
         }
+        public Person GetPersonById(int id)
+        {
+            var db = new PersonDbContext();
+            Person p = new Person();
+            p = db.People.FirstOrDefault(p => p.Id == id);
+            return p;
+        }
     }
 }
